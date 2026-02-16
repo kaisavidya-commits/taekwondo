@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,10 +9,25 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth','role:admin'])->get('/admin', function () {
+    return view('index');
+});
+
+Route::middleware(['auth','role:pembina'])->get('/pembina', function () {
+    return view('index');
+});
+
+Route::middleware(['auth','role:murid'])->get('/murid', function () {
+    return view('index');
+});
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/murid', [\App\Http\Controllers\MuridController::class, 'edit'])->name('murid.edit');
-    Route::patch('/murid', [\App\Http\Controllers\MuridController::class, 'update'])->name('murid.update');
-    Route::delete('/murid', [\App\Http\Controllers\MuridController::class, 'destroy'])->name('murid.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+require __DIR__.'/auth.php';
