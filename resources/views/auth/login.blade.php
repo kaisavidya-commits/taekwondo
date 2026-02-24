@@ -1,5 +1,5 @@
-<x-guest-layout>
-    <!-- Session Status -->
+<!--<x-guest-layout>-->
+     
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
@@ -44,4 +44,42 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> 
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Login
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html> -->
