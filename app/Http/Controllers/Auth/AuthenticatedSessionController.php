@@ -34,10 +34,9 @@ if ($user->role === 'admin') {
     return redirect('/admin');
 } elseif ($user->role === 'pembina') {
     return redirect('/pembina');
-} elseif ($user->role === 'murid') {
+} elseif ($user->role === 'siswa') {
     return redirect('/murid');
-}
-else {
+} else {
     return redirect('/dashboard');
 }
 
@@ -57,3 +56,4 @@ else {
         return redirect('/');
     }
 }
+

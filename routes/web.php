@@ -12,15 +12,15 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth','role:admin'])->get('/admin', function () {
-    return view('index');
+    return view('admin.index');
 });
 
 Route::middleware(['auth','role:pembina'])->get('/pembina', function () {
-    return view('index');
+    return view('pembina.index');
 });
 
-Route::middleware(['auth','role:murid'])->get('/murid', function () {
-    return view('index');
+Route::middleware(['auth','role:siswa'])->get('/murid', function () {
+    return view('murid.index');
 });
 
 
