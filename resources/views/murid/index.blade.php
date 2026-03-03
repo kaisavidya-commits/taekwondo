@@ -1,1 +1,10 @@
-<h1>HALAMAN SISWA hai sayang</h1>
+@extends('layout.app')
+
+@section('title','Data Murid')
+
+@section('content')
+
+Halo ini muuurid
+
+                
+@endsection

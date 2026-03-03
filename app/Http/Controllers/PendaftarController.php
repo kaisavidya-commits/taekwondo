@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MuridController extends Controller
+class PendaftarController extends Controller
 {
        public function index()
 {
     $datag = []; // sementara kosong
-    return view('murid.index', compact('datag'));
+    return view('pendaftar.index', compact('datag'));
 }
 }

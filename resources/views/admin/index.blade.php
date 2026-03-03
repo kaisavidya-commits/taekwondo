@@ -1,3 +1,14 @@
-<h1>Dashboard Admin</h1>
+@extends('layout.app')
 
-<p>Selamat datang di dashboard admin!</p>
+@section('title','Data Admin')
+
+@section('content')
+
+Halo ini admin 
+
+                
+@endsection
+
+
+
+

@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class AdminController extends Controller
 {
     public function index()
 {
     $datag = []; // sementara kosong
-    return view('dashboard.index', compact('datag'));
+    return view('admin.index', compact('datag'));
 }
 }
