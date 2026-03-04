@@ -1,49 +1,77 @@
+@php $role = auth()->user()->role; @endphp
+
 <nav class="sidebar">
 
-<div class="sidebar-brand">
-<i class="bi bi-flower1"></i>
-TAEKWONDO
-</div>
+    <div class="sidebar-brand">
+        <i class="bi bi-flower1"></i>
+        TAEKWONDO
+    </div>
 
-<div class="nav-section">Dashboard</div>
-<a href="/admin/dashboard" class="nav-link">
-<i class="bi bi-speedometer2"></i> Dashboard
-</a>
+    <!-- Dashboard (SEMUA ROLE) -->
+    <div class="nav-section">Dashboard</div>
+    <a href="/admin/dashboard" class="nav-link">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
 
-<div class="nav-section">Manajemen</div>
+    <!-- ================= MANAGEMEN ================= -->
 
-<a href="/admin/admin" class="nav-link">
-<i class="bi bi-person-gear"></i> Admin
-</a>
+    @if(in_array($role, ['super_admin','admin','pembina']))
+    <div class="nav-section">Manajemen</div>
+    @endif
 
-<a href="/admin/pembina" class="nav-link">
-<i class="bi bi-person-badge"></i> Pembina
-</a>
+    @if($role === 'super_admin')
+    <a href="/admin/admin" class="nav-link">
+        <i class="bi bi-person-gear"></i> Admin
+    </a>
+    @endif
 
-<a href="/admin/murid" class="nav-link">
-<i class="bi bi-people"></i> Murid
-</a>
+    @if(in_array($role, ['super_admin','admin']))
+    <a href="/admin/pembina" class="nav-link">
+        <i class="bi bi-person-badge"></i> Pembina
+    </a>
+    @endif
 
-<div class="nav-section">Pendaftaran</div>
+    @if(in_array($role, ['super_admin','admin','pembina']))
+    <a href="/admin/murid" class="nav-link">
+        <i class="bi bi-people"></i> Murid
+    </a>
+    @endif
 
-<a href="/admin/pendaftar" class="nav-link">
-<i class="bi bi-person-plus"></i> Pendaftar
-</a>
 
-<div class="nav-section">Kegiatan</div>
+    <!-- ================= PENDAFTARAN ================= -->
 
-<a href="/admin/event" class="nav-link">
-<i class="bi bi-calendar-event"></i> Event
-</a>
+    @if(in_array($role, ['super_admin','admin']))
+    <div class="nav-section">Pendaftaran</div>
 
-<a href="/admin/galeri" class="nav-link">
-<i class="bi bi-images"></i> Galeri
-</a>
+    <a href="/admin/pendaftar" class="nav-link">
+        <i class="bi bi-person-plus"></i> Pendaftar
+    </a>
+    @endif
 
-<div class="nav-section">Keuangan</div>
 
-<a href="/admin/iuran" class="nav-link">
-<i class="bi bi-cash"></i> Iuran
-</a>
+    <!-- ================= KEGIATAN ================= -->
+
+    <div class="nav-section">Kegiatan</div>
+
+    @if(in_array($role, ['super_admin','admin','pembina','murid']))
+    <a href="/admin/event" class="nav-link">
+        <i class="bi bi-calendar-event"></i> Event
+    </a>
+
+    <a href="/admin/galeri" class="nav-link">
+        <i class="bi bi-images"></i> Galeri
+    </a>
+    @endif
+
+
+    <!-- ================= KEUANGAN ================= -->
+
+    @if(in_array($role, ['super_admin','admin']))
+    <div class="nav-section">Keuangan</div>
+
+    <a href="/admin/iuran" class="nav-link">
+        <i class="bi bi-cash"></i> Iuran
+    </a>
+    @endif
 
 </nav>
