@@ -31,7 +31,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('guru', GuruController::class);
+Route::prefix('admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+    Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+});
 
 
 Route::middleware('auth')->group(function () {

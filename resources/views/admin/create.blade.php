@@ -1,26 +1,40 @@
-@extends('layouts.app')
+@extends('layout.app')
 
-@section('title', 'Tambah Guru')
+@section('title','Tambah Admin')
 
 @section('content')
-<div class="container">
-    <h2>Tambah Guru</h2>
 
-    <form action="{{ route('guru.store') }}" method="POST">
-        @csrf
+<div class="container-fluid">
 
-        <div class="mb-3">
-            <label>Nama</label>
-            <input type="text" name="nama" class="form-control">
-        </div>
+    <div class="mb-4">
+        <h3 class="fw-bold">Tambah Admin</h3>
+        <p class="text-muted">Buat akun admin baru</p>
+    </div>
 
-        <div class="mb-3">
-            <label>NIP</label>
-            <input type="text" name="nip" class="form-control">
-        </div>
+    <div class="stats-card">
+        <form action="{{ route('admin.store') }}" method="POST">
+            @csrf
 
-        <button type="submit" class="btn btn-success">Simpan</button>
-        <a href="{{ route('guru.index') }}" class="btn btn-secondary">Kembali</a>
-    </form>
+            <div class="mb-3">
+                <label>Nama</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button class="btn btn-primary">Simpan</button>
+            <a href="{{ route('admin.index') }}" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+
 </div>
+
 @endsection
