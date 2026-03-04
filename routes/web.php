@@ -12,9 +12,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::middleware(['auth','role:super_admin'])->get('/lele', function () {
+        return view('lele');
+    })->name('lele');
+
+});
 
 Route::middleware(['auth','role:admin'])->get('/admin', function () {
     return view('admin.index');

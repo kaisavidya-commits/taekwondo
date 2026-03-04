@@ -25,23 +25,22 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
-$user = auth()->user();
-
-if ($user->role === 'admin') {
-    return redirect('/admin');
-} elseif ($user->role === 'pembina') {
-    return redirect('/pembina');
-} elseif ($user->role === 'siswa') {
-    return redirect('/murid');
-} else {
-    return redirect('/dashboard');
-}
-
+    
+        $user = auth()->user();
+    
+        if ($user->role === 'super_admin') {
+            return redirect('/lele');
+        } elseif ($user->role === 'admin') {
+            return redirect('/admin');
+        } elseif ($user->role === 'pembina') {
+            return redirect('/pembina');
+        } elseif ($user->role === 'siswa') {
+            return redirect('/murid');
+        }
+    
+        return redirect('/dashboard');
     }
-
     /**
      * Destroy an authenticated session.
      */
