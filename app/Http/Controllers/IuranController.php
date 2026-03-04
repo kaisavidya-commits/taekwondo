@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MuridController extends Controller
+class IuranController extends Controller
 {
        public function index()
 {
     $datag = []; // sementara kosong
-    return view('murid.index', compact('datag'));
+    return view('iuran.index', compact('datag'));
 }
 }
