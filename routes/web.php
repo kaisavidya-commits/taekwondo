@@ -37,6 +37,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
     Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
+Route::resource('pembina', PembinaController::class);
+
 });
 
 
