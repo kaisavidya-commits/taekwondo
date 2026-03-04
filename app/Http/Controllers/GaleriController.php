@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class GaleriController extends Controller
 {
     public function index()
     {
         $datag = []; // sementara kosong
-        return view('admin.events.index', compact('datag'));
+        return view('admin.galeri.index', compact('datag'));
     }
 }

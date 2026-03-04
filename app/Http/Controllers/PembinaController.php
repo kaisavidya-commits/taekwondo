@@ -9,6 +9,6 @@ class PembinaController extends Controller
       public function index()
 {
     $datag = []; // sementara kosong
-    return view('pembina.index', compact('datag'));
+    return view('admin.pembina.index', compact('datag'));
 }
 }

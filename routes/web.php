@@ -11,6 +11,28 @@ use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\IuranController;
 
+
+// Semua role login bisa akses halaman iuran
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+
+    // Halaman utama iuran
+    Route::get('/iuran', [IuranController::class, 'index'])->name('admin.iuran');
+
+    // Tambah iuran / simpan → bisa diakses oleh admin/super_admin
+    Route::post('/iuran/store', [IuranController::class, 'store'])
+        ->name('admin.iuran.store')
+        ->middleware('role:super_admin,admin');
+
+    // Konfirmasi pembayaran → Hanya super_admin & admin
+    Route::post('/iuran/konfirmasi/{id}', [IuranController::class, 'confirm'])
+        ->name('admin.iuran.confirm')
+        ->middleware('role:super_admin,admin');
+
+    // Murid bayar tagihan → hanya role murid
+    Route::post('/iuran/bayar/{id}', [IuranController::class, 'bayar'])
+        ->name('murid.iuran.bayar')
+        ->middleware('role:murid');
+});
 Route::middleware(['auth'])
     ->prefix('admin')
     ->group(function () {
@@ -38,7 +60,7 @@ Route::middleware(['auth','role:super_admin,admin,pembina'])
 });
 
 
-Route::middleware(['auth','role:admin, super_admin'])
+Route::middleware(['auth','role:super_admin'])
     ->prefix('admin')
     ->group(function () {
 
