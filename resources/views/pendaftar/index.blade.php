@@ -1,10 +1,10 @@
 @extends('layout.app')
 
-@section('title','Data Event')
+@section('title','Data Pendaftar')
 
 @section('content')
 
-Halo ini buat Event
+Halo ini pendaftar 
 
                 
 @endsection

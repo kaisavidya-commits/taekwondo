@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class IuranController extends Controller
 {
+
     private function getHargaByUnit($unit)
 {
     $data = [
@@ -55,5 +56,7 @@ public function store(Request $request)
     ]);
 
     return redirect()->back()->with('success', 'Data iuran berhasil ditambahkan');
+
+      
 }
 }
