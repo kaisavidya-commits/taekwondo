@@ -9,6 +9,6 @@ class PendaftarController extends Controller
        public function index()
 {
     $datag = []; // sementara kosong
-    return view('pendaftar.index', compact('datag'));
+    return view('admin.pendaftar.index', compact('datag'));
 }
 }

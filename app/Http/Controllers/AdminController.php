@@ -11,12 +11,12 @@ class AdminController extends Controller
     public function index()
     {
         $admins = User::latest()->get();
-        return view('admin.index', compact('admins'));
+        return view('admin.admin.index', compact('admins'));
     }
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.admin.create');
     }
 
     public function store(Request $request)
