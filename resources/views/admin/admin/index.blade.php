@@ -13,9 +13,10 @@
             <small class="text-muted">Kelola akun admin sistem Taekwondo</small>
         </div>
 
-        <a href="{{ route('admin.create') }}" class="btn btn-primary shadow-sm">
-            + Tambah Admin
-        </a>
+   <form action="{{ route('admin.iuran.store') }}" method="POST" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-primary btn-sm">Tambah Iuran</button>
+</form>
     </div>
 
     @if(session('success'))
