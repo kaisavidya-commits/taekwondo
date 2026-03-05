@@ -49,9 +49,9 @@
         <i class="bi bi-calendar-event"></i> Event
     </a>
 
-    <a href="/admin/galeri" class="nav-link">
+    <!-- <a href="/admin/galeri" class="nav-link">
         <i class="bi bi-images"></i> Galeri
-    </a>
+    </a> -->
 
     <!-- ================= KEUANGAN ================= -->
 

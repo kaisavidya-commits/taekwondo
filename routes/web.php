@@ -35,14 +35,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Dashboard untuk semua role login
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    // Iuran: semua user login bisa lihat
-    Route::get('/iuran', [IuranController::class, 'index'])->name('admin.iuran.index');
-    Route::resource('admin/iuran', IuranController::class);
-    // Admin & Super Admin: tambah & konfirmasi iuran
-    Route::middleware('role:super_admin,admin')->group(function () {
-        Route::post('/iuran/store', [IuranController::class, 'store'])->name('admin.iuran.store');
-        Route::post('/iuran/confirm/{id}', [IuranController::class, 'confirm'])->name('admin.iuran.confirm');
-    });
+   
 
     // Super Admin: manajemen admin
     Route::middleware('role:super_admin')->group(function () {
@@ -63,23 +56,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::middleware('role:super_admin,admin')->group(function () {
         Route::get('/pendaftar', [PendaftarController::class, 'index']);
         Route::get('/pembina', [PembinaController::class, 'index']);
-        // INDEX: semua role login bisa lihat iuran
-        Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/iuran', [IuranController::class, 'index'])
-        ->name('admin.iuran.index');
-        });
+    //     // INDEX: semua role login bisa lihat iuran
+    //     Route::middleware(['auth'])->prefix('admin')->group(function () {
+    // Route::get('/iuran', [IuranController::class, 'index'])
+    //     ->name('admin.iuran.index');
+    //     });
 
-        // CREATE & STORE: hanya super_admin & admin
-        Route::middleware(['auth','role:super_admin,admin'])->prefix('admin/iuran')->group(function () {
-    Route::get('/create', [IuranController::class, 'create'])->name('admin.iuran.create');
-    Route::post('/store', [IuranController::class, 'store'])->name('admin.iuran.store');
-    Route::post('/confirm/{id}', [IuranController::class, 'confirm'])->name('admin.iuran.confirm');
-        });
+       
 
-    // BAYAR: hanya murid
-    Route::middleware(['auth','role:murid'])->prefix('murid/iuran')->group(function () {
-    Route::post('/bayar/{id}', [IuranController::class, 'bayar'])->name('murid.iuran.bayar');
-    });
 
     // Pembina: akses khusus
     Route::middleware('role:pembina')->get('/pembina', function () {
@@ -95,6 +79,47 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     });
 
 });});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| IURAN ROUTES (FIXED CLEAN VERSION)
+|--------------------------------------------------------------------------
+*/
+
+// Semua user login bisa lihat daftar iuran
+Route::middleware(['auth'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        Route::get('/iuran', [IuranController::class, 'index'])
+            ->name('iuran.index');
+
+        // Hanya super_admin & admin bisa tambah dan konfirmasi
+        Route::middleware('role:super_admin,admin')->group(function () {
+
+            Route::get('/iuran/create', [IuranController::class, 'create'])
+                ->name('iuran.create');
+
+Route::post('/iuran/store', [IuranController::class, 'store'])
+    ->name('iuran.store');
+
+            Route::post('/iuran/confirm/{id}', [IuranController::class, 'confirm'])
+                ->name('iuran.confirm');
+        });
+    });
+
+
+// Murid bayar
+Route::middleware(['auth','role:murid'])
+    ->prefix('murid/iuran')
+    ->group(function () {
+
+        Route::post('/bayar/{id}', [IuranController::class, 'bayar'])
+            ->name('murid.iuran.bayar');
+    });
 
 /*
 |--------------------------------------------------------------------------
@@ -159,5 +184,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/tes', function () {
+    return 'TES BERHASIL';
+});
 
 require __DIR__.'/auth.php';

@@ -118,6 +118,11 @@ private function hitungUmur($tanggal_lahir)
 
 public function store(Request $request)
 {
+    $request->validate([
+        'id_murid' => 'required|exists:murid,id',
+        'unit' => 'required|string'
+    ]);
+
     $murid = Murid::findOrFail($request->id_murid);
 
     $umur = $this->hitungUmur($murid->tanggal_lahir);
@@ -128,15 +133,15 @@ public function store(Request $request)
     $keterangan = null;
 
     // RULE 1: SDIT ALFALAH
-    if ($unit == 'SDIT ALFALAH') {
+    if ($unit === 'SDIT ALFALAH') {
         $harga = null;
         $keterangan = 'Pembayaran oleh pihak sekolah';
     }
 
-    // RULE 2: FREE untuk 17+ dan sabuk ireng
-    if ($umur >= 17 && $sabuk == 'hitam') {
+    // RULE 2: FREE untuk 17+ dan sabuk hitam
+    if ($umur >= 17 && $sabuk === 'hitam') {
         $harga = 0;
-        $keterangan = 'Gratis (Umur 17+ dan Sabuk Ireng)';
+        $keterangan = 'Gratis (Umur 17+ dan Sabuk Hitam)';
     }
 
     Iuran::create([
@@ -146,9 +151,8 @@ public function store(Request $request)
         'keterangan' => $keterangan,
     ]);
 
-    return redirect()->back()->with('success', 'Data iuran berhasil ditambahkan');
-
-      
+    return redirect()->route('admin.iuran.index')
+                     ->with('success', 'Data iuran berhasil ditambahkan');
 }
 
 
