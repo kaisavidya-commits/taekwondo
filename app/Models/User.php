@@ -46,4 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function pembina()
+    {
+        return $this->hasOne(Pembina::class, 'id', 'id');
+    }
+
+    public function murid()
+    {
+        return $this->hasOne(Murid::class);
+    }
 }

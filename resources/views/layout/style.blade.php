@@ -218,4 +218,216 @@
             margin-left: 0;
         }
     }
+
+    
+</style>
+
+<style>
+
+/* ===== HEADER SECTION ===== */
+.page-header h3 {
+    color: var(--navy-dark);
+    font-weight: 700;
+}
+
+.page-header small {
+    color: var(--dark-gray);
+}
+
+/* Tombol Tambah */
+.btn-primary {
+    background: linear-gradient(135deg, var(--maroon), var(--burgundy));
+    border: none;
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(139, 42, 46, 0.3);
+}
+
+/* ===== CARD TABLE ===== */
+.card {
+    border-radius: 18px !important;
+    overflow: hidden;
+}
+
+.card-body {
+    background: white;
+}
+
+/* ===== SEARCH BOX ===== */
+.input-group-text {
+    border-radius: 12px 0 0 12px !important;
+}
+
+#searchInput {
+    border-radius: 0 12px 12px 0 !important;
+    transition: 0.3s;
+}
+
+#searchInput:focus {
+    border-color: var(--maroon);
+    box-shadow: 0 0 0 3px rgba(139, 42, 46, 0.1);
+}
+
+/* ===== TABLE STYLE ===== */
+.table thead {
+    background: linear-gradient(135deg, var(--navy-dark), var(--blue-gray));
+    color: white;
+}
+
+.table thead th {
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px;
+}
+
+.table tbody tr {
+    transition: 0.25s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(85, 92, 132, 0.08);
+    transform: scale(1.01);
+}
+
+.table td {
+    padding: 14px;
+    vertical-align: middle;
+}
+
+/* ===== BADGE STYLE ===== */
+.badge-date {
+    background: rgba(20, 19, 59, 0.08);
+    color: var(--navy-dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* ===== BUTTON HAPUS ===== */
+.btn-outline-danger {
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    padding: 40px 0;
+    color: var(--dark-gray);
+    font-style: italic;
+}
+
+/* ===== ALERT ===== */
+.alert-success {
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e6f4ea, #f1fbf4);
+    border: 1px solid #c3e6cb;
+    color: #2f6b3f;
+}
+
+</style>
+
+<style>
+
+/* ===== HEADER ===== */
+.page-header h3 {
+    color: var(--navy-dark);
+    font-weight: 700;
+}
+
+/* ===== CARD ===== */
+.admin-card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* ===== SEARCH ===== */
+.search-box input {
+    border-radius: 0 14px 14px 0 !important;
+}
+
+.search-box .input-group-text {
+    border-radius: 14px 0 0 14px !important;
+}
+
+#searchInput:focus {
+    border-color: var(--maroon);
+    box-shadow: 0 0 0 3px rgba(139,42,46,0.1);
+}
+
+/* ===== TABLE ===== */
+.admin-table thead {
+    background: linear-gradient(135deg, var(--navy-dark), var(--blue-gray));
+    color: white;
+}
+
+.admin-table thead th {
+    border: none;
+    padding: 14px;
+    font-weight: 600;
+}
+
+.admin-table tbody tr {
+    transition: 0.25s ease;
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(85, 92, 132, 0.08);
+    transform: scale(1.01);
+}
+
+.admin-table td {
+    padding: 14px;
+}
+
+/* ===== DATE BADGE ===== */
+.badge-date {
+    background: rgba(20,19,59,0.08);
+    color: var(--navy-dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--maroon), var(--burgundy));
+    border: none;
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(139, 42, 46, 0.3);
+}
+
+.btn-outline-danger:hover {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: white;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    padding: 40px 0;
+    color: var(--dark-gray);
+    font-style: italic;
+}
+
 </style>

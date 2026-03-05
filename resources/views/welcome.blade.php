@@ -134,7 +134,7 @@ https://templatemo.com/tm-586-scholar
                 <p>Siswa kami aktif mengikuti kejuaraan tingkat kota hingga nasional.</p>
                 <div class="buttons">
                   <div class="main-button">
-                    <a href="prestasi.html">Lihat Prestasi</a>
+                    
                   </div>
                 </div>
               </div>

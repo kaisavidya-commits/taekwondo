@@ -1,7 +1,16 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <div class="mt-4">
+    <x-input-label for="id_pendaftar" value="ID Pendaftar" />
+    <x-text-input id="id_pendaftar"
+        class="block mt-1 w-full"
+        type="number"
+        name="id_pendaftar"
+        :value="old('id_pendaftar')"
+        required />
+    <x-input-error :messages="$errors->get('id_pendaftar')" class="mt-2" />
+</div>
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

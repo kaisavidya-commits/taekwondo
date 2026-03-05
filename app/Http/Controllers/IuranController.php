@@ -3,9 +3,100 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Iuran;   // << Ini penting!
+use App\Models\Murid;  
 class IuranController extends Controller
 {
+    public function index() {
+    $user = auth()->user();
+    $role = $user->role;
+    $iurans = Iuran::with('murid.user')
+    ->orderBy('id', 'desc')
+    ->get();
+
+    if(in_array($role, ['super_admin','admin','pembina'])) {
+        $iurans = Iuran::with('murid')->get();
+    } else {
+        $iurans = Iuran::with('murid')->where('id_murid', $user->id)->get();
+    }
+
+    return view('admin.iuran.index', compact('iurans', 'role'));
+}
+
+public function create() {
+    $murids = Murid::all();
+    $units = [
+        'GOR MEKAR GALIH',
+        'GOR GDN CICALENGKA',
+        'GOR NAGREG',
+        'SMP FK BINA MUDA',
+        'SMPN 1 CICALENGKA',
+        'SDIT ALFALAH',
+        'SDIT ALMUBAROKAH',
+        'SDN 221 BABAKAN SENTRAL KIRCON',
+        'SDN 270 GENTRA MAKSEDAS',
+        'GOR YM KOPO',
+    ];
+
+    return view('admin.iuran.create', compact('murids','units'));
+}
+
+// public function index()
+// {
+//     $user = auth()->user();
+//     $role = $user->role;
+
+//     if(in_array($role, ['super_admin','admin','pembina'])) {
+//         $iurans = Iuran::with('murid')->get(); // lihat semua murid
+//     } else { // murid
+//         $iurans = Iuran::with('murid')->where('id_murid', $user->id)->get();
+//     }
+
+//     return view('admin.iuran.index', compact('iurans', 'role'));
+// }
+
+public function confirm($id)
+{
+    $user = auth()->user();
+    if(!in_array($user->role, ['super_admin','admin'])) {
+        abort(403, 'Forbidden');
+    }
+
+    $iuran = Iuran::findOrFail($id);
+    $iuran->status = 'Lunas';
+    $iuran->save();
+
+    return redirect()->back()->with('success', 'Pembayaran berhasil dikonfirmasi');
+}
+
+public function bayar(Request $request, $id)
+{
+    $user = auth()->user();
+    if($user->role !== 'murid') {
+        abort(403, 'Forbidden');
+    }
+
+    $iuran = Iuran::findOrFail($id);
+    if($iuran->id_murid != $user->id) {
+        abort(403, 'Forbidden');
+    }
+
+    $iuran->status = 'Menunggu Konfirmasi';
+    $iuran->save();
+
+    return redirect()->back()->with('success', 'Tagihan berhasil dibayar, menunggu konfirmasi');
+}
+
+// app/Models/Iuran.php
+public function murid()
+{
+    return $this->belongsTo(Murid::class, 'id_murid');
+}
+
+private function hitungUmur($tanggal_lahir)
+{
+    return \Carbon\Carbon::parse($tanggal_lahir)->age;
+}
 
     private function getHargaByUnit($unit)
 {

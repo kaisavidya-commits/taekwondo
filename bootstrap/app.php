@@ -22,6 +22,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         ]);
     })
+    ->withMiddleware(function ($middleware) {
+        $middleware->alias([
+            'ceksiswa' => \App\Http\Middleware\CekSiswa::class,
+        ]);
+    })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();

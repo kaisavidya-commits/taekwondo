@@ -13,9 +13,10 @@
             <small class="text-muted">Kelola akun admin sistem Taekwondo</small>
         </div>
 
-        <a href="{{ route('admin.create') }}" class="btn btn-primary shadow-sm">
-            + Tambah Admin
-        </a>
+   <form action="{{ route('admin.iuran.store') }}" method="POST" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-primary btn-sm">Tambah Iuran</button>
+</form>
     </div>
 
     @if(session('success'))
@@ -29,15 +30,16 @@
         <div class="card-body p-4">
 
             <!-- Search -->
-            <div class="mb-3">
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0">
-                        <i class="bi bi-search text-muted"></i>
-                    </span>
+            <div class="mb-4">
+                <div class="search-bar-wrapper">
                     <input type="text"
                         id="searchInput"
-                        class="form-control border-start-0"
-                        placeholder="Cari nama atau email admin...">
+                        class="search-bar-input"
+                        placeholder="Cari nama atau email...">
+
+                    <button class="search-bar-button">
+                        Cari
+                    </button>
                 </div>
             </div>
 
@@ -103,4 +105,43 @@ document.getElementById("searchInput").addEventListener("keyup", function() {
 });
 </script>
 
+<style>
+/* =============================== */
+/* SEARCH STYLE */
+/* =============================== */
+
+.search-bar-wrapper {
+    display: flex;
+    width: 100%;
+    background: #eeeeee;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.search-bar-input {
+    flex: 1;
+    border: none;
+    padding: 14px 18px;
+    font-size: 15px;
+    background: transparent;
+    outline: none;
+}
+
+.search-bar-input::placeholder {
+    color: #6b7280;
+}
+
+.search-bar-button {
+    background: #8b1e1e;
+    color: white;
+    border: none;
+    padding: 0 28px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.search-bar-button:hover {
+    background: #6f1616;
+}
+</style>
 @endsection
