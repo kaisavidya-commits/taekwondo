@@ -6,21 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Murid extends Model
 {
-    protected $table = 'murid'; // 🔥 WAJIB kalau bukan murids
+    protected $table = 'murid';
+    protected $primaryKey = 'id_murid';
+    public $timestamps = false;
 
     protected $fillable = [
-        'id_murid',
         'nis',
         'alamat',
         'tgl_lahir',
         'no_telp',
         'sabuk',
         'foto',
-        'user_id'
+        'id_pendaftar',
+        'id'
     ];
 
     public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+{
+    return $this->belongsTo(\App\Models\User::class, 'id');
+}
+
+public function pendaftar()
+{
+    return $this->belongsTo(\App\Models\Pendaftar::class, 'id_pendaftar');
+}
 }

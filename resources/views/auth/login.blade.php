@@ -71,10 +71,15 @@
                     <label>Password</label>
                     <input type="password" name="password" class="form-control" required>
                 </div>
-
+                <div>                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                {{ __('Yang merasa belom daftar klik ini') }}
+            </a>
                 <button type="submit" class="btn btn-primary w-100">
                     Login
                 </button>
+
+                </div>
+
             </form>
 
         </div>

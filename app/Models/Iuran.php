@@ -26,6 +26,6 @@ class Iuran extends Model
      */
     public function murid()
     {
-        return $this->belongsTo(Murid::class, 'id_murid');
+        return $this->belongsTo(\App\Models\Murid::class, 'id_murid', 'id_murid');
     }
 }

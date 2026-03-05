@@ -10,6 +10,9 @@ class IuranController extends Controller
     public function index() {
     $user = auth()->user();
     $role = $user->role;
+    $iurans = Iuran::with('murid.user')
+    ->orderBy('id', 'desc')
+    ->get();
 
     if(in_array($role, ['super_admin','admin','pembina'])) {
         $iurans = Iuran::with('murid')->get();

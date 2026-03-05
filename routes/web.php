@@ -9,6 +9,20 @@ use App\Http\Controllers\PembinaController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\IuranController;
+use App\Http\Controllers\SignupController;
+use App\Http\Controllers\PendaftaranController;
+
+Route::get('/pendaftaran', [PendaftaranController::class, 'form'])->name('pendaftar.form');
+Route::post('/pendaftaran', [PendaftarController::class, 'store'])->name('pendaftar.store');
+Route::get('/pendaftaran', function () {
+    return view('pendaftaran');
+})->name('pendaftaran');
+Route::post('/pendaftaran', [PendaftarController::class, 'store'])
+    ->name('pendaftar.store');
+    Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+        Route::resource('pendaftar', PendaftarController::class)
+            ->except(['create','store']);
+    });
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +37,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Iuran: semua user login bisa lihat
     Route::get('/iuran', [IuranController::class, 'index'])->name('admin.iuran.index');
-
+    Route::resource('admin/iuran', IuranController::class);
     // Admin & Super Admin: tambah & konfirmasi iuran
     Route::middleware('role:super_admin,admin')->group(function () {
         Route::post('/iuran/store', [IuranController::class, 'store'])->name('admin.iuran.store');
@@ -76,6 +90,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::middleware('role:siswa')->get('/murid', function () {
         return view('murid.index');
     });
+    Route::prefix('admin')->name('admin.')->group(function() {
+        Route::resource('pendaftar', PendaftarController::class);
+    });
 
 });});
 
@@ -125,6 +142,10 @@ Route::prefix('admin')->group(function(){
 Route::prefix('admin')->group(function(){
     Route::resource('events', EventController::class);
 });
+
+//buat sign up
+Route::get('/signup-siswa', [SignupController::class, 'form']);
+Route::post('/signup-siswa', [SignupController::class, 'store'])->name('signup.siswa');
 
 
 

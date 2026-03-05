@@ -12,8 +12,7 @@
 
     <div class="card border-0 shadow-sm rounded-4">
         <div class="card-body p-4">
-
-            <form action="{{ route('pendaftar.update',$pendaftar->id) }}"
+<form action="{{ route('pendaftar.update', $pendaftar) }}"
                   method="POST"
                   enctype="multipart/form-data">
                 @csrf

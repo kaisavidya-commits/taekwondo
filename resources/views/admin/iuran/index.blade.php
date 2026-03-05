@@ -44,7 +44,8 @@
                         @forelse($iurans as $iuran)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $iuran->murid->name }}</td>
+                            <td>{{ $iuran->murid->user->name ?? '-' }}</td>
+                            {{ $iuran->murid?->user?->name ?? '-' }}                         
                             <td>{{ $iuran->unit }}</td>
                             <td>{{ $iuran->harga ?? '-' }}</td>
                             <td>{{ $iuran->keterangan ?? '-' }}</td>

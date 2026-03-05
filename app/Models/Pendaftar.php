@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pendaftar extends Model
 {
     protected $table = 'pendaftar';
+    protected $primaryKey = 'id_pendaftar';
+    public $timestamps = false;
 
     protected $fillable = [
-        'id_pendaftar',
         'nama',
         'alamat',
         'no_telp',
@@ -18,6 +19,10 @@ class Pendaftar extends Model
         'foto',
         'akte',
         'kk',
-        'status',
+        'status'
     ];
+
+
+
+
 }
