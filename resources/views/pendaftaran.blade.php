@@ -92,6 +92,30 @@
     </a>
     
 </div>
+{{-- Pesan Berhasil --}}
+@if (session('success'))
+    <div style="background:#d1fae5;color:#065f46;padding:10px;border-radius:6px;margin-bottom:10px;">
+        {{ session('success') }}
+    </div>
+@endif
+
+{{-- Pesan Gagal --}}
+@if (session('error'))
+    <div style="background:#fee2e2;color:#991b1b;padding:10px;border-radius:6px;margin-bottom:10px;">
+        {{ session('error') }}
+    </div>
+@endif
+
+{{-- Error Validasi --}}
+@if ($errors->any())
+    <div style="background:#fee2e2;color:#991b1b;padding:10px;border-radius:6px;margin-bottom:10px;">
+        <ul style="margin-left:15px;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
                     </form>
 
