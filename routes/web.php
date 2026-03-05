@@ -106,6 +106,8 @@ Route::middleware(['auth'])->group(function () {
         return view('lele');
     })->name('lele');
 
+Route::resource('pembina', PembinaController::class);
+
 });
 
 /*
