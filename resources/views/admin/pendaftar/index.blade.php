@@ -12,9 +12,6 @@
             <small class="text-muted">Kelola data calon murid</small>
         </div>
 
-        <a href="{{ route('pendaftar.create') }}" class="btn btn-primary shadow-sm">
-            + Tambah Pendaftar
-        </a>
     </div>
 
     @if(session('success'))
@@ -22,6 +19,19 @@
             {{ session('success') }}
         </div>
     @endif
+
+    <div class="mb-4">
+                <div class="search-bar-wrapper">
+                    <input type="text"
+                        id="searchInput"
+                        class="search-bar-input"
+                        placeholder="Cari nama atau email...">
+
+                    <button class="search-bar-button">
+                        Cari
+                    </button>
+                </div>
+            </div>
 
     <div class="card border-0 shadow-sm rounded-4">
         <div class="card-body p-4">
@@ -124,5 +134,58 @@
     </div>
 
 </div>
+
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function() {
+    let value = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#adminTable tbody tr");
+
+    rows.forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(value)
+            ? ""
+            : "none";
+    });
+});
+</script>
+
+<style>
+/* =============================== */
+/* SEARCH STYLE */
+/* =============================== */
+
+.search-bar-wrapper {
+    display: flex;
+    width: 100%;
+    background: #eeeeee;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.search-bar-input {
+    flex: 1;
+    border: none;
+    padding: 14px 18px;
+    font-size: 15px;
+    background: transparent;
+    outline: none;
+}
+
+.search-bar-input::placeholder {
+    color: #6b7280;
+}
+
+.search-bar-button {
+    background: #8b1e1e;
+    color: white;
+    border: none;
+    padding: 0 28px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.search-bar-button:hover {
+    background: #6f1616;
+}
+</style>
 
 @endsection
