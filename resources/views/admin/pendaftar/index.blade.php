@@ -12,6 +12,9 @@
             <small class="text-muted">Kelola data calon murid</small>
         </div>
 
+          <a href="{{ route('register') }}" class="btn btn-primary shadow-sm">
+            + Daftarkan akun murid baru
+        </a>
     </div>
 
     @if(session('success'))

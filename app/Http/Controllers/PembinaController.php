@@ -30,21 +30,19 @@ class PembinaController extends Controller
             'no_telpembina' => 'required|max:13'
         ]);
 
-        // 1️⃣ Buat user baru
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'pembina' // otomatis jadi pembina
+            'role' => 'pembina'
         ]);
 
-        // 2️⃣ Simpan ke tabel pembinas
         Pembina::create([
             'id' => $user->id,
             'no_telpembina' => $request->no_telpembina
         ]);
 
-        return redirect()->route('pembina.index')
+        return redirect()->route('admin.pembina.index')
                         ->with('success','Pembina berhasil ditambahkan');
     }
 
@@ -55,4 +53,3 @@ class PembinaController extends Controller
         return back()->with('success','Pembina berhasil dihapus');
     }
 }
-

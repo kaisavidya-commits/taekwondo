@@ -34,7 +34,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Dashboard untuk semua role login
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
+    Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
    
 
     // Super Admin: manajemen admin
@@ -66,10 +68,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 
     // Pembina: akses khusus
-    Route::middleware('role:pembina')->get('/pembina', function () {
-        return view('pembina.index');
-    });
-
+   
     // Murid: akses murid tertentu
     Route::middleware('role:siswa')->get('/murid', function () {
         return view('murid.index');
@@ -93,6 +92,10 @@ Route::middleware(['auth'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
+             Route::middleware('role:super_admin,admin')->group(function () {
+            Route::resource('pembina', PembinaController::class);
+        });
+
 
         Route::get('/iuran', [IuranController::class, 'index'])
             ->name('iuran.index');
