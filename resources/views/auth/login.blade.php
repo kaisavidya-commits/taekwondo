@@ -1,4 +1,4 @@
-<!--<x-guest-layout>-->
+<x-guest-layout>
      
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -46,7 +46,7 @@
     </form>
 </x-guest-layout> 
 
-<!-- <!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
@@ -82,4 +82,4 @@
 </div>
 
 </body>
-</html> -->
+</html> 

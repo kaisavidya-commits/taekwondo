@@ -10,7 +10,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+      <script>
+    window.addEventListener("beforeunload", function () {
+        navigator.sendBeacon("{{ route('logout') }}",
+            new Blob(["_token={{ csrf_token() }}"], { type: "application/x-www-form-urlencoded" })
+        );
+    });
+</script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

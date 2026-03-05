@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+//     public function index()
+// {
+//     $datag = []; // sementara kosong
+//     return view('dashboard.index', compact('datag'));
+// }
+public function index()
 {
-    $datag = []; // sementara kosong
-    return view('dashboard.index', compact('datag'));
+    $role = auth()->user()->role;
+
+    return view('dashboard.index', compact('role'));
 }
 }
