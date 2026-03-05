@@ -72,4 +72,15 @@ public function update(Request $request, Pendaftar $pendaftar)
     return redirect()->route('pendaftar.index')
         ->with('success','Data berhasil diupdate');
 }
+public function destroy($id)
+{
+    // Temukan data pendaftar berdasarkan ID
+    $pendaftar = \App\Models\Pendaftar::findOrFail($id);
+
+    // Hapus data
+    $pendaftar->delete();
+
+    // Redirect kembali dengan pesan sukses
+    return redirect()->route('pendaftar.index')->with('success', 'Data berhasil dihapus.');
+}
 }
