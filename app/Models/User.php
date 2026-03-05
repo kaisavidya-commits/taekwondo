@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Murid::class);
     }
+
+    public function events()
+    {
+        return $this->belongsToMany(\App\Models\Event::class, 'event_user');
+    }
 }

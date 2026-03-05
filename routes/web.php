@@ -132,7 +132,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('events',EventController::class);
 
+Route::get('/murid/events',[EventController::class,'murid'])
+->name('murid.events');
+
+Route::post('/event-daftar/{id}',
+[EventController::class,'daftar'])
+->name('event.daftar');
+
+Route::resource('events', EventController::class);
 
 
 require __DIR__.'/auth.php';

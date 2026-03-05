@@ -17,6 +17,8 @@ return new class extends Migration
         $table->text('deskripsi');
         $table->date('tanggal');
         $table->string('lokasi');
+        $table->integer('kuota');
+        $table->string('link_pendaftaran')->nullable();
         $table->timestamps();
     });
 }
@@ -28,4 +30,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('events');
     }
+
+    
 };

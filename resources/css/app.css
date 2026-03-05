@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --navy-dark: #14133B;
+  --blue-gray: #555C84;
+  --maroon: #8B2A2E;
+  --burgundy: #6E0F18;
+  --light-gray: #B7B8C7;
+  --dark-gray: #8A8C95;
+  --soft-bg: #F4F5FA;
+}
+
+/* Background halaman profile */
+.bg-gray-100 {
+  background-color: var(--soft-bg) !important;
+}
+
+/* Card */
+.bg-white {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
+}
+
+/* Judul */
+h2 {
+  color: var(--navy-dark) !important;
+}
+
+/* Label */
+label {
+  color: var(--blue-gray) !important;
+  font-weight: 500;
+}
+
+/* Input */
+input {
+  border-radius: 10px !important;
+  border: 1px solid var(--light-gray) !important;
+}
+
+input:focus {
+  border-color: var(--navy-dark) !important;
+  box-shadow: 0 0 0 2px rgba(20,19,59,0.2) !important;
+}
+
+/* Button */
+button {
+  background-color: var(--maroon) !important;
+  border-radius: 10px !important;
+}
+
+button:hover {
+  background-color: var(--burgundy) !important;
+}
