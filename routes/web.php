@@ -109,17 +109,30 @@ Route::middleware(['auth'])->group(function () {
 
 Route::resource('pembina', PembinaController::class);
 
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+    Route::resource('murid', MuridController::class);
+
 });
 
-/*
-|--------------------------------------------------------------------------
-| Routes profile
-|--------------------------------------------------------------------------
-*/
+
+Route::prefix('admin')->group(function(){
+    Route::resource('pendaftar', PendaftarController::class);
+});
+});
+
+Route::prefix('admin')->group(function(){
+    Route::resource('events', EventController::class);
+});
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';
