@@ -13,9 +13,9 @@
             <small class="text-muted">Kelola akun admin sistem Taekwondo</small>
         </div>
 
-   <form action="{{ route('admin.iuran.store') }}" method="POST" class="d-inline">
+   <form action="{{ route('admin.store') }}" method="POST" class="d-inline">
     @csrf
-    <button type="submit" class="btn btn-primary btn-sm">Tambah Iuran</button>
+    <button type="submit" class="btn btn-primary btn-sm">Tambah Akun</button>
 </form>
     </div>
 

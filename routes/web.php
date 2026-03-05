@@ -105,6 +105,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
 Route::get('/pendaftaran', function () {
     return view('pendaftaran');
 })->name('pendaftaran');

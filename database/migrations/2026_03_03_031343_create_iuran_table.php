@@ -13,13 +13,20 @@ return new class extends Migration
     {
         Schema::create('iuran', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_murid');
+            $table->unsignedBigInteger('id_murid')->nullable(); // langsung nullable
             $table->string('unit');
             $table->decimal('harga', 10, 2)->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
+
+            // foreign key di dalam closure
+            $table->foreign('id_murid')
+                  ->references('id')
+                  ->on('murid')
+                  ->onDelete('set null');
         });
     }
+
     /**
      * Reverse the migrations.
      */

@@ -82,11 +82,16 @@
                             <input type="file" name="kk" class="form-control" required>
                         </div>
 
-                        <div class="d-grid">
-                            <button class="btn btn-primary rounded-3">
-                                Daftar Sekarang
-                            </button>
-                        </div>
+              <div class="d-grid">
+    <button class="btn btn-primary rounded-3" style="background-color: #8B2A2E;">
+        Daftar Sekarang
+    </button>
+    
+    <a href="{{ route('welcome') }}" class="btn rounded-3 mt-2" style="background-color: #B7B8C7; color: white; border: none;">
+        Kembali
+    </a>
+    
+</div>
 
                     </form>
 
