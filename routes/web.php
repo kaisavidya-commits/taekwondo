@@ -184,6 +184,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// routes/web.php
+Route::get('/cek-status', [PendaftarController::class, 'cekStatus'])->name('cek.status');
+Route::post('/cek-status', [PendaftarController::class, 'hasilStatus'])->name('cek.hasil');
+
+
+Route::post('/pendaftar/{id}/tolak',  [PendaftarController::class, 'tolak'])->name('pendaftar.tolak');
+
 Route::get('/tes', function () {
     return 'TES BERHASIL';
 });
