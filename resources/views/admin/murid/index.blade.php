@@ -13,9 +13,7 @@
             <small class="text-muted">Kelola data murid Taekwondo</small>
         </div>
 
-        <a href="{{ route('murid.create') }}" class="btn btn-primary shadow-sm">
-            + Tambah Murid
-        </a>
+       
     </div>
 
     @if(session('success'))
@@ -47,7 +45,6 @@
                         <tr>
                             <th>#</th>
                             <th>Foto</th>
-                            <th>NIS</th>
                             <th>Nama</th>
                             <th>Sabuk</th>
                             <th>No Telp</th>
@@ -59,15 +56,26 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 
-                            <td>
-                                <img src="{{ asset('storage/'.$murid->foto) }}"
-                                     width="50"
-                                     height="50"
-                                     style="object-fit:cover;border-radius:8px;">
-                            </td>
+                           
 
-                            <td>{{ $murid->nis }}</td>
-                            <td class="fw-semibold">{{ $murid->user->name }}</td>
+                            <td>
+    @if($murid->pendaftar?->foto)
+        <img src="{{ asset('storage/'.$murid->pendaftar->foto) }}"
+             width="50" height="50"
+             style="object-fit:cover;border-radius:8px;">
+    @else
+        <div style="width:50px;height:50px;border-radius:8px;
+                    background:#eee;display:flex;align-items:center;
+                    justify-content:center;color:#999;font-size:11px;">
+            No foto
+        </div>
+    @endif
+</td>
+
+<td class="fw-semibold">
+    {{ $murid->pendaftar?->nama ?? $murid->user->name }}
+</td>
+                            
                             <td>{{ $murid->sabuk }}</td>
                             <td>{{ $murid->no_telp }}</td>
 

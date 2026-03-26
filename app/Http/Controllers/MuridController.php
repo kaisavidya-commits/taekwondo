@@ -131,22 +131,24 @@ class MuridController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-    {
-        $murid = Murid::with('user')->findOrFail($id);
+  public function destroy($id)
+{
+    $murid = Murid::findOrFail($id);
 
-        // Hapus foto
-        if ($murid->foto && Storage::disk('public')->exists($murid->foto)) {
-            Storage::disk('public')->delete($murid->foto);
-        }
-
-        // Hapus user login
-        $murid->user->delete();
-
-        // Hapus murid
-        $murid->delete();
-
-        return redirect()->route('murid.index')
-            ->with('success', 'Data murid berhasil dihapus');
+    // Hapus foto
+    if ($murid->foto && Storage::disk('public')->exists($murid->foto)) {
+        Storage::disk('public')->delete($murid->foto);
     }
+
+    // Hapus user kalau ada
+    if ($murid->user) {
+        $murid->user->delete();
+    }
+
+    // Hapus murid
+    $murid->delete();
+
+    return redirect()->route('murid.index')
+        ->with('success', 'Data murid berhasil dihapus');
+}
 }

@@ -26,8 +26,9 @@ class Murid extends Model
     return $this->belongsTo(\App\Models\User::class, 'id');
 }
 
+// app/Models/Murid.php
 public function pendaftar()
 {
-    return $this->belongsTo(\App\Models\Pendaftar::class, 'id_pendaftar');
+    return $this->belongsTo(Pendaftar::class, 'id_pendaftar', 'id_pendaftar');
 }
 }
