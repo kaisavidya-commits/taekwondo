@@ -44,7 +44,7 @@ class PembinaController extends Controller
             'no_telpembina' => $request->no_telpembina
         ]);
 
-        return redirect()->route('pembina.index')
+        return redirect()->route('admin.pembina.index')
                         ->with('success','Pembina berhasil ditambahkan');
     }
 

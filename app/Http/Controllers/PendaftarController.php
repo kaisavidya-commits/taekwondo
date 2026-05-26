@@ -103,16 +103,16 @@ public function update(Request $request, $id)
 
             Mail::to($pendaftar->email)->send(new PendaftaranDiterima($pendaftar, $password));
 
-            return redirect()->route('pendaftar.index')
+            return redirect()->route('admin.pendaftar.index')
                 ->with('success', "Diterima! Kredensial login sudah dikirim ke {$pendaftar->email}");
 
         } catch (\Exception $e) {
-            return redirect()->route('pendaftar.index')
+            return redirect()->route('admin.pendaftar.index')
                 ->with('error', 'Gagal: ' . $e->getMessage());
         }
     }
 
-    return redirect()->route('pendaftar.index')
+    return redirect()->route('admin.pendaftar.index')
         ->with('success', 'Data pendaftar berhasil diupdate.');
 }
 
@@ -156,6 +156,6 @@ public function destroy($id)
     $pendaftar->delete();
 
     // Redirect kembali dengan pesan sukses
-    return redirect()->route('pendaftar.index')->with('success', 'Data berhasil dihapus.');
+    return redirect()->route('admin.pendaftar.index')->with('success', 'Data berhasil dihapus.');
 }
 }

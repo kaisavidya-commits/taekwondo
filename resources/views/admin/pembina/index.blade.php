@@ -13,7 +13,7 @@
             <small class="text-muted">Kelola akun pembina sistem Taekwondo</small>
         </div>
 
-        <a href="{{ route('pembina.create') }}" class="btn btn-primary shadow-sm">
+        <a href="{{ route('admin.pembina.create') }}" class="btn btn-primary shadow-sm">
             + Tambah Pembina
         </a>
     </div>
@@ -66,7 +66,7 @@
                             </td>
                             <td>{{ $pembina->no_telpembina }}</td>
                             <td>
-                                <form action="{{ route('pembina.destroy', $pembina->id_pembina) }}"
+                                <form action="{{ route('admin.pembina.destroy', $pembina->id_pembina) }}"
                                       method="POST"
                                       onsubmit="return confirm('Yakin hapus pembina ini?')">
                                     @csrf

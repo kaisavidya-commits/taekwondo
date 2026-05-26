@@ -12,7 +12,7 @@
 
     <div class="card border-0 shadow-sm rounded-4">
         <div class="card-body p-4">
-<form action="{{ route('pendaftar.update', $pendaftar) }}"
+<form action="{{ route('admin.pendaftar.update', $pendaftar) }}"
                   method="POST"
                   enctype="multipart/form-data">
                 @csrf
@@ -53,7 +53,7 @@
                 </div>
 
                 <button class="btn btn-primary">Update</button>
-                <a href="{{ route('pendaftar.index') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('admin.pendaftar.index') }}" class="btn btn-secondary">Kembali</a>
 
             </form>
 

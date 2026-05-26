@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        <form action="{{ route('pembina.store') }}" method="POST">
+        <form action="{{ route('admin.pembina.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
@@ -51,7 +51,7 @@
                 Simpan
             </button>
 
-            <a href="{{ route('pembina.index') }}"
+            <a href="{{ route('admin.pembina.index') }}"
                class="btn btn-secondary rounded-pill">
                Kembali
             </a>
